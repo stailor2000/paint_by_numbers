@@ -143,7 +143,7 @@ def build_loss(neural_net, optimizing_img, target_representations, content_featu
     return total_loss, content_loss, style_loss, tv_loss
 
 
-def neural_style_transfer(config, content_img, style_img, device):
+def neural_style_transfer(config, content_img, style_img, device, progress_update=None):
 
     num_of_iterations = 1000
 
@@ -173,9 +173,12 @@ def neural_style_transfer(config, content_img, style_img, device):
         if total_loss.requires_grad:
             total_loss.backward()
         with torch.no_grad():
-            if cnt % 25 == 0:
-                print(f'L-BFGS | iteration: {cnt:03}/{num_of_iterations}, total loss={total_loss.item():12.4f}, content_loss={config["content_weight"] * content_loss.item():12.4f}, style loss={config["style_weight"] * style_loss.item():12.4f}, tv loss={config["tv_weight"] * tv_loss.item():12.4f}')
-            # utils.save_and_maybe_display(optimizing_img, dump_path, config, cnt, num_of_iterations[config['optimizer']], should_display=False)
+            if progress_update==None:
+                if cnt % 25 == 0:
+                    print(f'L-BFGS | iteration: {cnt:03}/{num_of_iterations}, total loss={total_loss.item():12.4f}, content_loss={config["content_weight"] * content_loss.item():12.4f}, style loss={config["style_weight"] * style_loss.item():12.4f}, tv loss={config["tv_weight"] * tv_loss.item():12.4f}')
+                # utils.save_and_maybe_display(optimizing_img, dump_path, config, cnt, num_of_iterations[config['optimizer']], should_display=False)
+            elif progress_update:
+                progress_update(cnt, num_of_iterations)
 
         cnt += 1
         return total_loss
