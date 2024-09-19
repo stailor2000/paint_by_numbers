@@ -212,13 +212,6 @@ def apply_adaption(uploaded_file, uploaded_file_style, nst_config, paint_config,
                     # Once complete, remove the progress bar
                     progress_placeholder.empty()  # This removes the widget
 
-            # # Setup the progress bar
-            # progress_bar = st.progress(0, text="Operation in progress.... Could take a few minutes.")
-
-            # def update_progress(current_step, total_steps):
-            #     progress = min(current_step / total_steps, 1)
-            #     progress_bar.progress(progress, text="Operation in progress.... Could take a few minutes.")
-
             # Run style adaption training with progress update
             merged_image_tensor = utils_nst.neural_style_transfer(nst_config, content_tensor, style_tensor, device, progress_update=update_progress)
 
