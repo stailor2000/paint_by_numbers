@@ -57,11 +57,10 @@ This project provides two main functionalities: a **Paint by Numbers** tool and 
 - **Generate Paint By Numbers**: Create a labeled paint-by-numbers image with a color palette from the stylised output.
 
 ### Example:
-![NST Example](./readme_images/butterfly_NST.png)
 ![Paint By Numbers Example](./readme_images/apple_NST.png)
 
 
-
+![Paint By Numbers Example](./readme_images/butterfly_NST_effect.png)
 
 ---
 
