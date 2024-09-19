@@ -59,7 +59,7 @@ This project provides two main functionalities: a **Paint by Numbers** tool and 
 ### Example:
 ![Paint By Numbers Example](./readme_images/apple_NST.png)
 
-![Paint By Numbers Example](./readme_images/butterfly_NST.png)
+![NST Example](./readme_images/butterfly_NST.png)
 
 
 ---
